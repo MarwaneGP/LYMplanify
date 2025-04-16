@@ -42,7 +42,7 @@ export const AppContext = createContext<AppContextType | undefined>(undefined);
 
 // ==== Provider Component ====
 
-export const EventProvider = ({ children }: { children: React.ReactNode }) => {
+export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [events, setEvents] = useState<Event[]>([]);
   const [votes, setVotes] = useState<Vote[]>([]);
