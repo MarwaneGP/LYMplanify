@@ -1,14 +1,15 @@
-import { View, TextInput } from 'react-native';
-import { AppProvider } from './context';
+
+import { AppProvider } from '@/providers/app';
 import AppContainer from '../components/AppContainer';
-export default function TextGetter() {
+import Home from './views/home/index';
+
+
+export default function App() {
 
   return (
     <AppProvider>
-      <AppContainer childElement={ }>
-
+      <AppContainer childElement={<Home />}>
       </AppContainer>
-
     </AppProvider>
   );
-}
+} 

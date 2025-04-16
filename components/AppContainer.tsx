@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 export default function AppContainer({ childElement }: { childElement: React.ReactNode }) {
   return (
@@ -11,9 +11,10 @@ export default function AppContainer({ childElement }: { childElement: React.Rea
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 40,
+    backgroundColor: '#F5F7FA',
     alignItems: 'center',
-    margin: 10,
-    backgroundColor: 'red',
+    justifyContent: 'flex-start',
   },
 });
