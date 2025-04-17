@@ -1,7 +1,7 @@
 import { AuthContext, IAuthContext } from "@/context/auth";
 import { supabase } from "@/utils/supabase";
 import { Session } from "@supabase/supabase-js";
-import { PropsWithChildren, useCallback, useEffect, useState } from "react";
+import { PropsWithChildren, useCallback, useEffect, useMemo, useState } from "react";
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<null | boolean>(null);
@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     authenticate();
 
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log(`Supabase auth event: ${event}`);
       setSession(session);
       setUser(!!session);
     });
@@ -31,10 +30,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     };
   }, [authenticate]);
 
-  const value: IAuthContext = {
-    user,
-    session,
-  };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{
+    user, session
+  }}>{children}</AuthContext.Provider>;
 };

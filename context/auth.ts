@@ -6,7 +6,4 @@ export interface IAuthContext {
   session: Session | null;
 }
 
-export const AuthContext = createContext<IAuthContext>({
-  user: null,
-  session: null,
-});
+export const AuthContext = createContext<IAuthContext | undefined>(undefined);

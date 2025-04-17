@@ -1,6 +1,6 @@
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter, useSegments } from "expo-router";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import { ActivityIndicator, View } from "react-native";
 
 export const AuthGuard = ({ children }: PropsWithChildren) => {
@@ -13,15 +13,17 @@ export const AuthGuard = ({ children }: PropsWithChildren) => {
 
     if (user === false) {
       const path = "/" + segments.filter(Boolean).join("/");
-      router.replace(`/?redirect=${encodeURIComponent(path)}`);
+      router.replace( `/signin?redirect=${encodeURIComponent(path)}`);
     }
   }, [user, segments]);
 
   if (user === null) {
     return (
+      <>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" />
       </View>
+      </>
     );
   }
 
