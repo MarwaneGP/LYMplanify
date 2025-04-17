@@ -1,33 +1,30 @@
 import { View, TextInput, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Link, useRouter } from 'expo-router';
+import Signup from './signup';
+import Login from './login';
+import Loading from '@/components/Loading';
 import styles from '../../../constants/styles';
+import { useAuth } from '@/hooks/useAuth';
+
 
 
 export default function Home() {
+  const { user } = useAuth();
+  const router = useRouter();
+  const navigate: any () => {
+    router.push('/home/dashboard')
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to LYM Planify 🎉</Text>
-      <Text style={styles.subtitle}>Plan and vote on events effortlessly with your team!</Text>
-
-      <View style={styles.formContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#aaa"
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor="#aaa"
-          secureTextEntry
-        />
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-      </View>
+      {
+        user === null && <Loading />
+      }
+      {
+        user === false && <Login />
+      }
+      {
+        user && router.push('/home/dashboard')
+      }
     </View>
   );
 }
