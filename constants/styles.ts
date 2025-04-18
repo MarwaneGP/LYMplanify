@@ -48,10 +48,22 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
   },
+
   buttonText: {
     color: '#fff',
     fontWeight: '600',
     fontSize: 16,
+  },
+  buttonLink: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 16,
+    paddingHorizontal: 10,
+    marginTop: 10,
+    backgroundColor: '#3478f6',
+    paddingVertical: 15,
+    borderRadius: 8,
+    alignItems: 'center',
   },
 });
 

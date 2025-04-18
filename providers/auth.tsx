@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session);
       setUser(!!session);
+      console.log("Auth state changed", event, session);
     });
     return () => {
       data.subscription.unsubscribe();
